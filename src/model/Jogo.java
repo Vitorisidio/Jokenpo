@@ -16,14 +16,13 @@ public class Jogo {
         Scanner leitor = new Scanner(System.in);
         Random random = new Random();
 
-        System.out.println("--------------------------------------");
         System.out.println("Escolha uma opção:");
-        System.out.println("(1) Pedra");
-        System.out.println("(2) Papel");
-        System.out.println("(3) Tesoura");
+        System.out.println("(1) PEDRA");
+        System.out.println("(2) PAPEL");
+        System.out.println("(3) TESOURA");
         System.out.println("--------------------------------------");
 
-        System.out.print("Digite a sua escolha: ");
+        System.out.print("Digite a sua escolha:");
         jogador = leitor.nextInt();
         computador = random.nextInt(3)+1;
 
@@ -32,17 +31,23 @@ public class Jogo {
 
     public void partida(){
 
+        if (jogador > 3){
+
+            System.out.println("\n opção invalida Escolha novamente: \n");
+            obterDados();
+
+        }
 
         if (jogador == computador){
 
-            resultado= "***EMPATE***";
+            resultado= "*** E M P A T E ***";
 
         } else if (( jogador == 1 && computador == 3 || jogador == 2 && computador == 1 || jogador == 3 && computador == 2) ) {
 
-            resultado= "***O JOGADOR VENCEU***";
+            resultado= "*** V E N C E U ***";
 
         }else {
-            resultado= "***O JOGADOR PERDEU***";
+            resultado= "*** P E R D E U ***";
         }
 
         exibirResultados();
@@ -54,7 +59,7 @@ public class Jogo {
             escolhaJogador = "PEDRA";
         } else if (jogador == 2) {
             escolhaJogador = "PAPEL";
-        }else {
+        }else if (jogador == 3){
             escolhaJogador = "TESOURA";
         }
 
@@ -62,13 +67,13 @@ public class Jogo {
             escolhaComputador = "PEDRA";
         } else if (computador == 2) {
             escolhaComputador = "PAPEL";
-        }else {
+        }else if (computador == 3){
             escolhaComputador = "TESOURA";
         }
 
-        System.out.println("O JOGADOR ESCOLHEU: " + escolhaJogador);
-        System.out.println("O COMPUTADOR ESCOLHEU: " + escolhaComputador);
-        System.out.println("RESULTADO: " + resultado);
+        System.out.println("\nVocê escolheu: " + escolhaJogador);
+        System.out.println("O computador escolheu: " + escolhaComputador + "\n");
+        System.out.println(resultado);
 
 
         jogarNovamente();
@@ -80,7 +85,7 @@ public class Jogo {
         Scanner leitor = new Scanner(System.in);
         String jogarDenovo;
 
-        System.out.println("Jogar novamente (S/N)?");
+        System.out.println("\n Jogar novamente (S/N)?");
         jogarDenovo= leitor.nextLine();
         if (jogarDenovo.equals("s") || jogarDenovo.equals  ("S") ) {
             System.out.println("--------------------");
